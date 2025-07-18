@@ -176,3 +176,12 @@ WHERE Customer_Segment = 'Corporate' AND YEAR(CAST([Order_Date] AS DATE)) BETWEE
 GROUP BY Customer_Name
 ORDER BY Num_Orders desc
 ```
+
+**N0. 9:** . Which consumer customer was the most profitable one?
+
+**Ans:** Emily Phan	34005.44SQL
+select top 1 customer_name, sum(profit) as total_profit
+from [KMS Sql Case Study]
+where Customer_Segment = 'consumer'
+group by Customer_Name
+order by total_profit desc
