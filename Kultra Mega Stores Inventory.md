@@ -179,9 +179,11 @@ ORDER BY Num_Orders desc
 
 **N0. 9:** . Which consumer customer was the most profitable one?
 
-**Ans:** Emily Phan	34005.44SQL
+**Ans:** Emily Phan	(34,005.44)
+```SQL
 select top 1 customer_name, sum(profit) as total_profit
 from [KMS Sql Case Study]
 where Customer_Segment = 'consumer'
 group by Customer_Name
 order by total_profit desc
+```
