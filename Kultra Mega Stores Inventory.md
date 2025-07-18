@@ -94,3 +94,15 @@ ORDER BY
 3. Offer loyalty programs, bundles, or volume discounts.
 4. Assign dedicated account reps for support and retention.
 5. Market top-selling or complementary products to them.
+
+
+**No. 5:** KMS incurred the most shipping cost using which shipping method?
+
+**Ans:** Delivery Truck-519,71.94
+```SQL
+select top 1 ship_mode, sum(shipping_cost) as [total shipping cost]
+from [KMS Sql Case Study]
+group by ship_mode
+order by [total shipping cost] desc
+```
+
