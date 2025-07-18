@@ -106,3 +106,6 @@ group by ship_mode
 order by [total shipping cost] desc
 ```
 
+### Case Scenario II
+
+**No. 6:** Who are the most valuable customers, and what products or services do they typically purchase?
