@@ -2,7 +2,7 @@
 #### Kultra Mega Stores (KMS), headquartered in Lagos, specialises in office supplies and furniture. Its customer base includes individual consumers, small businesses (retail), and large corporate clients (wholesale) across Lagos, Nigeria.
 #### I have been engaged as a Business Intelligence Analyst to support the Abuja division ofKMS. The Business Manager has shared an Excel file containing order data from 2009 to 2012 and has requested that I analyze the data and present my key insights and findings.
 
-I applied my SQL skills from the DSA Data Analysis class and solve both case scenariosas shared in the document [here]().
+I applied my SQL skills from the DSA Data Analysis class and solved both case scenarios as shared in the document [here](https://drive.google.com/file/d/1BW8JojR2KDCymArnac-mvG4nLHbn9Xa5/view?usp=drive_link).
 
 [Raw KMS data](https://drive.google.com/file/d/1BGndN0FlR9IHmV11S7HJ0cSmrcAhzseV/view?usp=drive_link)
 
@@ -186,4 +186,32 @@ from [KMS Sql Case Study]
 where Customer_Segment = 'consumer'
 group by Customer_Name
 order by total_profit desc
+```
+
+**No. 10:** . Which customer returned items, and what segment do they belong to?
+
+**Ans:** There is no data on returned items.
+```SQL
+SELECT DISTINCT Customer_Name, Customer_Segment
+FROM [KMS Sql Case Study]
+WHERE Product_Name LIKE '%Return%' OR Order_ID IN (SELECT Order_ID
+        FROM [KMS Sql Case Study]
+        WHERE Product_Name LIKE '%Return%')
+```
+
+**No. 11:** If the delivery truck is the most economical but the slowest shipping method and Express Air is the fastest but the most expensive one, do you think the company appropriately spent shipping costs based on the Order Priority? Explain your answer
+
+**Ans:** I don't think the company appropriately spent shipping cost based on order priority cos from the query in number 11, we see that express air which is the most expensive but fastest shipping method was mostly used for low priority products while the critical priority products were mostly delivered by regular air followed by delivery truck (the slowest shipping method).
+
+I therefore advise that:
+- High-priority orders should favor fast (expensive) shipping like Express Air and
+- Low-priority orders should use Delivery Truck (economical).
+```SQL
+Select Order_Priority, Ship_Mode,
+    COUNT(*) AS Num_of_Orders,
+    SUM(Shipping_Cost) AS Total_Shipping_Cost
+FROM [KMS Sql Case Study]
+GROUP BY Order_Priority, Ship_Mode
+ORDER BY 
+    Order_Priority, Total_Shipping_Cost DESC;
 ```
