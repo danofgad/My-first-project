@@ -19,8 +19,30 @@ from [KMS Sql Case Study]
 group by product_category
 order by product_category desc
 ```
-,597,549.33)
 
-Ontario (3,063,212.55)
-Prarie (2837,304.59)
+**No. 2** What are the Top 3 and Bottom 3 regions in terms of sales?
+
+**Ans:**
+
+**Top 3:**
+- West,(3597,549.41)
+- Ontario (3,063,212.60)
+- Prarie (2837,304.60)
 ```SQL
+select top 3 Region, sum(sales) as totalsales
+from [KMS Sql Case Study]
+group by Region
+order by totalsales desc
+```
+
+**Bottom 3:**
+- Nunavut	(116376.47)
+- Northwest Territories	(800847.35)
+- Yukon	(975867.39)
+```SQL
+select top 3 Region, sum(sales) as totalsales
+from [KMS Sql Case Study]
+group by Region
+order by totalsales ASC
+```
+
