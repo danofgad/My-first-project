@@ -155,3 +155,24 @@ ORDER BY
     Customer_Name, Total_Expenditure DESC;
 ```
 
+**No. 7:** Which small business customer had the highest sales?
+
+**Ans:** Dennis Kane (75,967.59)
+```SQL
+select top 1 customer_name, sum(sales) as total_sales
+	from [KMS Sql Case Study]
+	where Customer_Segment = 'small business'
+	group by Customer_Name
+	order by total_sales desc
+```
+
+**N0. 8:** Which Corporate Customer placed the most number of orders in 2009 – 2012?
+
+**Ans:** Adam Hart	(18)
+```SQL
+SELECT top 1 Customer_Name, COUNT(DISTINCT Order_ID) AS Num_Orders
+from [KMS Sql Case Study]
+WHERE Customer_Segment = 'Corporate' AND YEAR(CAST([Order_Date] AS DATE)) BETWEEN 2009 AND 2012
+GROUP BY Customer_Name
+ORDER BY Num_Orders desc
+```
