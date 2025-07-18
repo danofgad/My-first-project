@@ -10,9 +10,17 @@ I applied my SQL skills from the DSA Data Analysis class and solve both case sce
 
 ### Case scenario I
 **No. 1**  Which product category had the highest sales?
-**Ans:**
-TOP 3:
-West (3,597,549.33)
+
+**Ans: Technology-5984248.50 sales**
+
+```SQL
+select top 1 product_category,sum(sales) as totalsales
+from [KMS Sql Case Study]
+group by product_category
+order by product_category desc
+```
+,597,549.33)
+
 Ontario (3,063,212.55)
 Prarie (2837,304.59)
 ```SQL
