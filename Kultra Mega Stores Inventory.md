@@ -109,3 +109,49 @@ order by [total shipping cost] desc
 ### Case Scenario II
 
 **No. 6:** Who are the most valuable customers, and what products or services do they typically purchase?
+
+**Ans:**
+
+**Top 5 Most valuable customer in terms of sales**
+1. Emily Phan	(117,124.43)
+2. Deborah Brumfield (97,433.14)
+3. Roy Skaria	(92,542.16)
+4. Sylvia Foulston	(88,875.76)
+5. Grant Carroll	(88,417.00)
+```SQL
+select top 5 customer_name, sum(sales) as [total sales]
+from [KMS Sql Case Study]
+group by Customer_Name
+order by [total sales] desc
+```
+**Products or services that these customers purchase**
+<img width="2560" height="1440" alt="Screenshot (166)" src="https://github.com/user-attachments/assets/59214c40-cfac-4faf-b0ba-16593ed8f98d" />
+
+<img width="2560" height="1440" alt="Screenshot (167)" src="https://github.com/user-attachments/assets/c34dd2d2-8ce8-4ce3-b2d8-98fd2587b35a" />
+
+```SQL
+WITH TopCustomers AS (
+    SELECT TOP 5 
+        Customer_Name
+    FROM 
+        [KMS Sql Case Study]
+    GROUP BY 
+        Customer_Name
+    ORDER BY 
+        SUM(Sales) DESC
+)
+SELECT 
+    Customer_Name, 
+    Product_Sub_Category,
+    COUNT(*) AS Num_Orders, 
+    SUM(Sales) AS Total_Expenditure
+FROM 
+    [KMS Sql Case Study]
+WHERE 
+    Customer_Name IN (SELECT Customer_Name FROM TopCustomers)
+GROUP BY 
+    Customer_Name, Product_Sub_Category
+ORDER BY 
+    Customer_Name, Total_Expenditure DESC;
+```
+
