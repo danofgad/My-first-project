@@ -11,7 +11,7 @@ I applied my SQL skills from the DSA Data Analysis class and solve both case sce
 ### Case scenario I
 **No. 1**  Which product category had the highest sales?
 
-**Ans: Technology-5984248.50 sales**
+**Ans: Technology-5,984,248.50 sales**
 
 ```SQL
 select top 1 product_category,sum(sales) as totalsales
@@ -36,9 +36,9 @@ order by totalsales desc
 ```
 
 **Bottom 3:**
-- Nunavut	(116376.47)
-- Northwest Territories	(800847.35)
-- Yukon	(975867.39)
+- Nunavut	(116,376.47)
+- Northwest Territories	(800,847.35)
+- Yukon	(975,867.39)
 ```SQL
 select top 3 Region, sum(sales) as totalsales
 from [KMS Sql Case Study]
@@ -46,3 +46,51 @@ group by Region
 order by totalsales ASC
 ```
 
+**N0. 3:** What were the total sales of appliances in Ontario?
+
+**Ans:** 202,346.84
+```SQL
+select sum(sales) as ontario_appliance_sales
+from [KMS Sql Case Study]
+where Product_Sub_Category = 'APPLIANCES' and province = 'ontario'
+```
+
+**No. 4:** Advise the management of KMS on what to do to increase the revenue from the bottom 10 customers
+
+**Ans:** Bottom 10 customers with lowest venue include:
+- Jeremy Farry	(85.72)
+- Natalie DeCherney	(125.90)
+- Nicole Fjeld	(153.03)
+- Katrina Edelman	(180.76)
+- Dorothy Dickinson	(198.08)
+- Christine Kargatis	(293.22)
+- Eric Murdock	(343.33)
+- Chris McAfee	(350.18)
+- Rick Huthwaite	(415.82)
+- Mark Hamilton	(450.99)
+```SQL
+select top 10 customer_name, sum(sales) as totalsales
+from [KMS Sql Case Study]
+group by Customer_Name
+order by totalsales asc
+```
+*To get more info about these customers so I can give an informed advise, I ran the following query:*
+```SQL
+SELECT TOP 10 
+    Customer_Name,
+    MAX(Customer_Segment) AS Customer_Segment,
+    MAX(Region) AS Region,
+    SUM(Sales) AS TotalSales
+FROM 
+    [KMS Sql Case Study]
+GROUP BY 
+    Customer_Name
+ORDER BY 
+    TotalSales ASC
+```
+**My advise to increase revenue from these customers are:**
+1. Understand why they purchase less (e.g., customer survey).
+2. reduce shipping cost to these regions
+3. Offer loyalty programs, bundles, or volume discounts.
+4. Assign dedicated account reps for support and retention.
+5. Market top-selling or complementary products to them.
