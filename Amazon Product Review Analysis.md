@@ -84,3 +84,11 @@ Using filters and sort on the 'Rating x Review' column in the cleaned dataset, t
 
 ## DASHBOARD
 **Click [here](https://docs.google.com/spreadsheets/d/1PFwGk3agFjWzSYyHFDad4vZqFzJxZZyJ/edit?usp=drive_link&ouid=101004108638642852403&rtpof=true&sd=true) to see dashboard**
+
+Below are some pictures of the dashboard:
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/16a0fca5-ff6d-41e8-bbe5-e5980dcd1905" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/ae585133-cdc0-4cb2-b772-d63deb18a7d8" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/24dc2b33-36f2-4f3a-bc13-e843b371a842" />
+
+
+
